@@ -16,5 +16,11 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             var model = new MealCategoryList[0];
             return View(model);
         }
+
+        // GET: Create/MealCategory
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
