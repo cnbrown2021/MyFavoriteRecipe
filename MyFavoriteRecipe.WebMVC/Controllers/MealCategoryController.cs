@@ -18,9 +18,15 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         }
 
         // GET: Create/MealCategory
-        public ActionResult Create()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(MealCategoryCreate model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(model);
         }
     }
 }
