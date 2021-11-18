@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MealCategoryCreate.cs" />
+    <Compile Include="MealCategoryDetail.cs" />
     <Compile Include="MealCategoryList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

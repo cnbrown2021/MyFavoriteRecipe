@@ -60,8 +60,8 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         // Customer/Detail/{id}
         public ActionResult Details(int id)
         {
-            var svc = CreateMealCategoryService();
-            var category = svc.GetMealCategoryById(id);
+            var service = new MealCategoryService();
+            var category = service.GetMealCategoryById(id);
 
             return View(category);
         }
