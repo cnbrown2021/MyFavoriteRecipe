@@ -70,6 +70,19 @@ namespace MyFavoriteRecipe.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        // DELETE
+        public bool DeleteMealCategory(int categoryId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.MealCategories.Single(c => c.CategoryID == categoryId);
+
+                ctx.MealCategories.Remove(content);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
 

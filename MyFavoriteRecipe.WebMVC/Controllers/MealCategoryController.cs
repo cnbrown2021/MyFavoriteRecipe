@@ -85,11 +85,6 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(category);
 
-            //if(category.CategoryName !=name)
-            //{
-              //  ModelState.AddModelError("", "Name Mismatch");
-                //return View(category);
-            //}
             var service = new MealCategoryService();
 
             if (service.UpdateMealCategory(category))
@@ -100,6 +95,30 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             ModelState.AddModelError("", "The category could not be updated.");
 
             return View(category);
+        }
+
+        // DELETE
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var service = new MealCategoryService();
+            var category = service.GetMealCategoryById(id);
+
+            return View(category);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = new MealCategoryService();
+
+            service.DeleteMealCategory(id);
+
+            TempData["SaveResult"] = "The meal category was deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }
