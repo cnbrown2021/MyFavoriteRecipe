@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MealCategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyFavoriteRecipes.Data\MyFavoriteRecipes.Data.csproj">
+      <Project>{0fb36067-5bc1-41f9-9d03-f63574a854a5}</Project>
+      <Name>MyFavoriteRecipes.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFavoriteRecipes.Model\MyFavoriteRecipes.Model.csproj">
+      <Project>{1FD369CD-E60F-4016-B0AE-428518D2678C}</Project>
+      <Name>MyFavoriteRecipes.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
