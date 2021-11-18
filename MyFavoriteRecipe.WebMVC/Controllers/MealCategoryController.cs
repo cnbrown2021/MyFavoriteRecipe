@@ -78,5 +78,28 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             };
             return View(content);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string name, MealCategoryEdit category)
+        {
+            if (!ModelState.IsValid) return View(category);
+
+            //if(category.CategoryName !=name)
+            //{
+              //  ModelState.AddModelError("", "Name Mismatch");
+                //return View(category);
+            //}
+            var service = new MealCategoryService();
+
+            if (service.UpdateMealCategory(category))
+            {
+                TempData["SaveResult"] = "The category was updated";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "The category could not be updated.");
+
+            return View(category);
+        }
     }
 }

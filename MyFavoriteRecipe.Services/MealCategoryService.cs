@@ -57,6 +57,19 @@ namespace MyFavoriteRecipe.Services
             }
         }
          
+        // UPDATE
+        public bool UpdateMealCategory(MealCategoryEdit category)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.MealCategories.Single(c => c.CategoryName == category.CategoryName);
+
+                content.CategoryName = category.CategoryName;
+                content.CategoryDescription = category.CategoryDescription;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
 

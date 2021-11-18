@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyFavoriteRecipes.Model
 {
-    class MealCategoryEdit
+    public class MealCategoryEdit
     {
+        public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
     }
 }
