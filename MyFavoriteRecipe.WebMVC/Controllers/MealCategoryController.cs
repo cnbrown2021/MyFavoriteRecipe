@@ -40,13 +40,19 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MealCategoryCreate category)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(category);
+            
+            var service = new MealCategoryService();
+            
+            if (service.CreateMealCategory(category))
             {
-                return View(category);
-            }
-                var service = new MealCategoryService();
-                service.CreateMealCategory(category);
+                TempData["SaveResult"] = "The Meal Category was created.";
                 return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Category could not be created");
+
+            return View(category);
             
         }
     }
