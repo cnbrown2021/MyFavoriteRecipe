@@ -55,5 +55,15 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             return View(category);
             
         }
+
+        // GET: Detail
+        // Customer/Detail/{id}
+        public ActionResult Details(int id)
+        {
+            var svc = CreateMealCategoryService();
+            var category = svc.GetMealCategoryById(id);
+
+            return View(category);
+        }
     }
 }

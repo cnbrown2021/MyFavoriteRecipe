@@ -41,7 +41,22 @@ namespace MyFavoriteRecipe.Services
             }
         }
 
-        // GET ByName
+        // GET byId
+        public MealCategoryDetail GetMealCategoryById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.MealCategories.Single(c => c.CategoryID == id);
+
+                return new MealCategoryDetail
+                {
+                    CategoryID = content.CategoryID,
+                    CategoryName = content.CategoryName,
+                    CategoryDescription = content.CategoryDescription
+                };
+            }
+        }
          
     }
 }
+
