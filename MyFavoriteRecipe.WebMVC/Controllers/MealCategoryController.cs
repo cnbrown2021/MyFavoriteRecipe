@@ -12,18 +12,10 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
     [Authorize]
     public class MealCategoryController : Controller
     {
-        //private ApplicationDbContext _db = new ApplicationDbContext();
-        //private MealCategoryService CreateMealCategoryService()
-        //{
-            //MealCategoryService category = new MealCategoryService();
-          //  return category;
-        //}
+        
         // GET: MealCategory
         public ActionResult Index()
         {
-            //MealCategoryService mealCategory = CreateMealCategoryService();
-            //var category = mealCategory.GetMealCategories();
-            //return View(category);
             var service = new MealCategoryService();
             var category = service.GetMealCategories();
             return View(category);
