@@ -1,4 +1,5 @@
 ﻿using MyFavoriteRecipe.Services;
+using MyFavoriteRecipes.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,20 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             return View();
         }
 
+        // GET Create/Reference
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ReferenceCreate reference)
+        {
+            if (!ModelState.IsValid) return View(reference);
 
+            var service = new ReferenceService();
+
+            if (service.CreateReference(reference))
+            {
+                return RedirectToAction("Index");
+            }
+            return View(reference);
+        }
     }
 }

@@ -8,8 +8,9 @@ namespace MyFavoriteRecipes.Model
 {
     public class ReferenceList
     {
-        public int CategoryID { get; set; }
-        public string CategoryName { get; set; }
-        public string CategoryDescription { get; set; }
+        public int ReferenceID { get; set; }
+        public string CookbookName { get; set; }
+        public string CookbookAuthor { get; set; }
     }
 }
+

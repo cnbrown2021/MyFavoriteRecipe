@@ -1,4 +1,5 @@
 ﻿using MyFavoriteRecipe.WebMVC.Models;
+using MyFavoriteRecipes.Data;
 using MyFavoriteRecipes.Model;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,12 @@ namespace MyFavoriteRecipe.Services
         //Create
         public bool CreateReference(ReferenceCreate reference)
         {
-            var content = new ReferenceService()
+            var content = new Reference()
             {
                 CookbookName = reference.CookbookName,
-                CookbookAuthor = reference.CookbookAuthor,
+                CookbookAuthor = reference.CookbookAuthor
             };
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.References.Add(content);
@@ -25,7 +27,6 @@ namespace MyFavoriteRecipe.Services
             }
         }
 
-        // GET
         public IEnumerable<ReferenceList> GetReferences()
         {
             using (var ctx = new ApplicationDbContext())
@@ -37,6 +38,7 @@ namespace MyFavoriteRecipe.Services
                         CookbookName = r.CookbookName,
                         CookbookAuthor = r.CookbookAuthor
                     });
+
             }
         }
     }
