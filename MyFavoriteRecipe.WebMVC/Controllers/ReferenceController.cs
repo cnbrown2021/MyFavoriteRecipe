@@ -45,5 +45,13 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
 
             return View(reference);
         }
+
+        public ActionResult Details(int id)
+        {
+            var service = new ReferenceService();
+            var category = service.GetReferenceById(id);
+
+            return View(category);
+        }
     }
 }

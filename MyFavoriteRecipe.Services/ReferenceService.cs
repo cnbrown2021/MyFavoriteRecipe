@@ -41,5 +41,20 @@ namespace MyFavoriteRecipe.Services
                 return query.ToArray();
             }
         }
+
+        public ReferenceDetail GetReferenceById (int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.References.Single(r => r.ReferenceID == id);
+
+                return new ReferenceDetail
+                {
+                    ReferenceID = content.ReferenceID,
+                    CookbookName = content.CookbookName,
+                    CookbookAuthor = content.CookbookAuthor
+                };
+            }
+        }
     }
 }

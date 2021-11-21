@@ -1,0 +1,42 @@
+﻿@model MyFavoriteRecipes.Model.ReferenceDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ReferenceDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferenceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferenceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CookbookName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CookbookName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CookbookAuthor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CookbookAuthor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
