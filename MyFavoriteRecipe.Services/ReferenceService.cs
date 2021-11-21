@@ -38,7 +38,7 @@ namespace MyFavoriteRecipe.Services
                         CookbookName = r.CookbookName,
                         CookbookAuthor = r.CookbookAuthor
                     });
-
+                return query.ToArray();
             }
         }
     }

@@ -36,8 +36,13 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
 
             if (service.CreateReference(reference))
             {
+                //ViewBag.SaveResult = "Your reference was created.";
+                TempData["SaveResult"] = "Your reference was created."; //Removes data after access
                 return RedirectToAction("Index");
             }
+
+            ModelState.AddModelError("", "Reference could not be created.");
+
             return View(reference);
         }
     }
