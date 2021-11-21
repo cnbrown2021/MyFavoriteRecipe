@@ -56,5 +56,30 @@ namespace MyFavoriteRecipe.Services
                 };
             }
         }
+
+        public bool UpdateReference(ReferenceEdit reference)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.References.Single(r => r.CookbookName == reference.CookbookName);
+
+                content.CookbookName = reference.CookbookName;
+                content.CookbookAuthor = reference.CookbookAuthor;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteReference(int referenceId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.References.Single(r => r.ReferenceID == referenceId);
+
+                ctx.References.Remove(content);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
