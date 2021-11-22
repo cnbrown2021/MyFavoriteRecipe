@@ -66,6 +66,42 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             return View(content);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string name, ReferenceEdit reference)
+        {
+            if (!ModelState.IsValid) return View(reference);
 
+            var service = new ReferenceService();
+
+            if (service.UpdateReference(reference))
+            {
+                TempData["SaveResult"] = "The reference was updated";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "The reference could not be updated.");
+
+            return View(reference);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var service = new ReferenceService();
+            var reference = service.GetReferenceById(id);
+
+            return View(reference);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = new ReferenceService();
+            service.DeleteReference(id);
+            TempData["SaveResult"] = "The reference was deleted";
+            return RedirectToAction("Index");
+        }
     }
 }
