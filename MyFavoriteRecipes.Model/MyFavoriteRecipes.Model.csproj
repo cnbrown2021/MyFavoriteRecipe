@@ -59,6 +59,10 @@
     <Compile Include="MealCategoryEdit.cs" />
     <Compile Include="MealCategoryList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipesCreate.cs" />
+    <Compile Include="RecipesDetail.cs" />
+    <Compile Include="RecipesEdit.cs" />
+    <Compile Include="RecipesList.cs" />
     <Compile Include="ReferenceCreate.cs" />
     <Compile Include="ReferenceDetail.cs" />
     <Compile Include="ReferenceEdit.cs" />

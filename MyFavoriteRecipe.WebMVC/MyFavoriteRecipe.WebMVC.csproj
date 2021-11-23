@@ -247,10 +247,11 @@
     <Content Include="Views\Reference\Details.cshtml" />
     <Content Include="Views\Reference\Edit.cshtml" />
     <Content Include="Views\Reference\Delete.cshtml" />
+    <Content Include="Views\Recipes\Index.cshtml" />
+    <Content Include="Views\Recipes\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Recipes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

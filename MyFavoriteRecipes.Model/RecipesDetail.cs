@@ -8,12 +8,13 @@ namespace MyFavoriteRecipes.Model
 {
     public class RecipesDetail
     {
+        public int RecipeID { get; set; }
         public string RecipeName { get; set; }
         public string Ingredients { get; set; }
         public string CookingInstructions { get; set; }
         public int CategoryID { get; set; }
         public int ReferenceID { get; set; }
-        enum SkillLevel
+        public enum SkillLevel
         {
             BeginnerFriendly,
             Intermediate,
@@ -21,3 +22,4 @@ namespace MyFavoriteRecipes.Model
         }
     }
 }
+

@@ -28,7 +28,7 @@ namespace MyFavoriteRecipes.Data
         [ForeignKey(nameof(Reference))]
         public int ReferenceID { get; set; }
 
-        enum SkillLevel
+        public enum SkillLevel
         {
             BeginnerFriendly,
             Intermediate,
