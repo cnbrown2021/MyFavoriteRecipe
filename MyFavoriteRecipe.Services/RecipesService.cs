@@ -46,6 +46,22 @@ namespace MyFavoriteRecipe.Services
             }
         }
 
+        public RecipesDetail GetRecipesById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.Recipe.Single(r => r.RecipeID == id);
 
+                return new RecipesDetail
+                {
+                    RecipeID = content.RecipeID,
+                    RecipeName = content.RecipeName,
+                    Ingredients = content.Ingredients,
+                    CookingInstructions = content.CookingInstructions,
+                    CategoryID = content.CategoryID,
+                    ReferenceID = content.ReferenceID,
+                };
+            }
+        }
     }
 }
