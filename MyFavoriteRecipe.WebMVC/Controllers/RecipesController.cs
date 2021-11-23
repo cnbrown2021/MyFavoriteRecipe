@@ -45,7 +45,7 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         public ActionResult Details(int id)
         {
             var service = new RecipesService();
-            var recipe = service.GetRecipesByID(id);
+            var recipe = service.GetRecipesById(id);
 
             return View(recipe);
         }
