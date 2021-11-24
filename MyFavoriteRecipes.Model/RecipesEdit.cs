@@ -11,8 +11,9 @@ namespace MyFavoriteRecipes.Model
         public string RecipeName { get; set; }
         public string Ingredients { get; set; }
         public string CookingInstructions { get; set; }
-        public string CategoryName { get; set; }
-        public string CookbookName { get; set; }
+        public int CategoryID { get; set; }
+        public int ReferenceID { get; set; }
+        public SkillLevel CookingLevel { get; set; }
         public enum SkillLevel
         {
             BeginnerFriendly,

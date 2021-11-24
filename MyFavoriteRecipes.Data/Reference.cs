@@ -16,7 +16,7 @@ namespace MyFavoriteRecipes.Data
         [Required]
         public string CookbookAuthor { get; set; }
 
-        public virtual ICollection<Recipes> Recipes { get; set; }
+        public virtual ICollection<Recipes> Recipe { get; set; }
 
         //public bool IsThisAWebsite { get; set; }
 

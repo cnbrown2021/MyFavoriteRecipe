@@ -30,35 +30,41 @@
             @Html.DisplayNameFor(model => model.Ingredients)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
+            @Html.DisplayNameFor(model => model.CategoryID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CookbookName)
+            @Html.DisplayNameFor(model => model.ReferenceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CookingLevel)
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecipeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ingredients)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CookbookName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.RecipeID }) |
-                @Html.ActionLink("Details", "Details", new {id=item.RecipeID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.RecipeID })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RecipeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ingredients)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoryID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReferenceID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CookingLevel)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
+    </td>
+</tr>
     }
 
 </table>

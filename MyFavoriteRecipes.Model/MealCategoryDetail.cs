@@ -11,6 +11,7 @@ namespace MyFavoriteRecipes.Model
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
+        public List<RecipesList> Recipe { get; set; }
     }
 }
 

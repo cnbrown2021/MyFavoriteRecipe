@@ -11,6 +11,8 @@ namespace MyFavoriteRecipes.Model
         public int ReferenceID { get; set; }
         public string CookbookName { get; set; }
         public string CookbookAuthor { get; set; }
+        public List<RecipesList> Recipe { get; set; }
     }
 }
+
 

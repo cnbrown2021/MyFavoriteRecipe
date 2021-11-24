@@ -25,12 +25,14 @@ namespace MyFavoriteRecipes.Data
         public virtual MealCategory MealCategory { get; set; }
         [ForeignKey(nameof(MealCategory) )]
         [Display(Name = "Meal Category")]
-        public string CategoryName { get; set; }
+        public int CategoryID { get; set; }
 
         public virtual Reference Reference { get; set; }
         [ForeignKey(nameof(Reference))]
         [Display(Name = "Cookbook Name")]
-        public string CookbookName { get; set; }
+        public int ReferenceID { get; set; }
+
+        public SkillLevel CookingLevel { get; set; }
 
         public enum SkillLevel
         {
@@ -39,7 +41,7 @@ namespace MyFavoriteRecipes.Data
             Advanced
         }
 
-        
+       
         //Social Media Link?
 
         
