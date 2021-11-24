@@ -43,24 +43,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CategoryID)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryID)
+            @Html.DisplayFor(model => model.CategoryName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ReferenceID)
+            @Html.DisplayNameFor(model => model.CookbookName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReferenceID)
+            @Html.DisplayFor(model => model.CookbookName)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecipeID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

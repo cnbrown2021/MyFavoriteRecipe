@@ -30,10 +30,10 @@
             @Html.DisplayNameFor(model => model.Ingredients)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryID)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReferenceID)
+            @Html.DisplayNameFor(model => model.CookbookName)
         </th>
         <th></th>
     </tr>
@@ -48,15 +48,15 @@
                 @Html.DisplayFor(modelItem => item.Ingredients)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryID)
+                @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReferenceID)
+                @Html.DisplayFor(modelItem => item.CookbookName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.RecipeID }) |
+                @Html.ActionLink("Details", "Details", new {id=item.RecipeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.RecipeID })
             </td>
         </tr>
     }

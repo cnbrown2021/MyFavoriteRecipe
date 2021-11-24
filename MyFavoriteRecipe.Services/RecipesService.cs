@@ -18,8 +18,8 @@ namespace MyFavoriteRecipe.Services
                 RecipeName = recipes.RecipeName,
                 Ingredients = recipes.Ingredients,
                 CookingInstructions = recipes.CookingInstructions,
-                CategoryID = recipes.CategoryID,
-                ReferenceID = recipes.ReferenceID,
+                CategoryName = recipes.CategoryName,
+                CookbookName = recipes.CookbookName,
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -39,8 +39,8 @@ namespace MyFavoriteRecipe.Services
                         RecipeID = r.RecipeID,
                         RecipeName = r.RecipeName,
                         Ingredients = r.Ingredients,
-                        CategoryID = r.CategoryID,
-                        ReferenceID = r.ReferenceID
+                        CategoryName = r.CategoryName,
+                        CookbookName = r.CookbookName
                     });
                 return query.ToArray();
             }
@@ -58,8 +58,8 @@ namespace MyFavoriteRecipe.Services
                     RecipeName = content.RecipeName,
                     Ingredients = content.Ingredients,
                     CookingInstructions = content.CookingInstructions,
-                    CategoryID = content.CategoryID,
-                    ReferenceID = content.ReferenceID,
+                    CategoryName = content.CategoryName,
+                    CookbookName = content.CookbookName,
                 };
             }
         }
