@@ -63,5 +63,23 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             };
             return View(content);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string name, RecipesEdit recipes)
+        {
+            if (!ModelState.IsValid) return View(recipes);
+
+            var service = new RecipesService();
+
+            if (service.UpdateRecipes(recipes))
+            {
+                TempData["SaveResult"] = "The recipe was updated";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "The recipe could not be updated");
+
+            return View(recipes);
+        }
     }
 }
