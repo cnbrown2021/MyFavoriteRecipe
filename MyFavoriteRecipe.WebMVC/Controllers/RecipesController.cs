@@ -50,5 +50,18 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
 
             return View(recipes);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var service = new RecipesService();
+            var detail = service.GetRecipesById(id);
+            var content = new RecipesEdit
+            {
+                RecipeName = detail.RecipeName,
+                Ingredients = detail.Ingredients,
+                CookingInstructions = detail.CookingInstructions
+            };
+            return View(content);
+        }
     }
 }

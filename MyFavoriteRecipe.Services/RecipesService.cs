@@ -63,5 +63,21 @@ namespace MyFavoriteRecipe.Services
                 };
             }
         }
+
+        public bool UpdateRecipes(RecipesEdit recipes)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.Recipe.Single(r => r.RecipeName == recipes.RecipeName);
+
+                content.RecipeName = recipes.RecipeName;
+                content.Ingredients = recipes.Ingredients;
+                content.CookingInstructions = recipes.CookingInstructions;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        
     }
 }
