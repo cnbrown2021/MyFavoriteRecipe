@@ -17,7 +17,7 @@ namespace MyFavoriteRecipes.Model
         public SkillLevel CookingLevel { get; set; }
         public enum SkillLevel
         {
-            BeginnerFriendly,
+            Beginner,
             Intermediate,
             Advanced
         }

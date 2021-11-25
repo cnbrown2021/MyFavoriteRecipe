@@ -14,8 +14,9 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         // GET: Recipes
         public ActionResult Index()
         {
-            var service = new RecipesList[0];
-            return View(service);
+            var service = new RecipesService();
+            var recipes = service.GetRecipes();
+            return View(recipes);
         }
 
         [HttpGet]
@@ -45,9 +46,9 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         public ActionResult Details(int id)
         {
             var service = new RecipesService();
-            var recipe = service.GetRecipesById(id);
+            var recipes = service.GetRecipesById(id);
 
-            return View(recipe);
+            return View(recipes);
         }
     }
 }

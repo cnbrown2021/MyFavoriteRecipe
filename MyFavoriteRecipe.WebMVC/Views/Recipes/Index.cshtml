@@ -12,13 +12,14 @@
 
 @if (TempData.ContainsKey("SaveResult"))
 {
-<div class="alert alert-success fade in" role="alert">
+    <div class="alert alert-success fade in" role="alert">
 
-    <button type="button" class="close" data-dismiss="alert">
-        <span>&times;</span>
-    </button>
-    @TempData["SaveResult"]
-</div>
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+
 }
 
 <table class="table">
@@ -43,28 +44,28 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.RecipeName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Ingredients)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CategoryID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ReferenceID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CookingLevel)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingredients)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CookingLevel)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
+            </td>
+        </tr>
     }
 
 </table>

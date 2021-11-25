@@ -36,7 +36,7 @@ namespace MyFavoriteRecipes.Data
 
         public enum SkillLevel
         {
-            BeginnerFriendly,
+            Beginner,
             Intermediate,
             Advanced
         }

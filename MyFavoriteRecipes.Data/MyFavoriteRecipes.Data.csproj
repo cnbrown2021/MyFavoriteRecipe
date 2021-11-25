@@ -56,6 +56,15 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MealCategory.cs" />
+    <Compile Include="Migrations\202111171606422_InitialCreate.cs" />
+    <Compile Include="Migrations\202111171606422_InitialCreate.Designer.cs">
+      <DependentUpon>202111171606422_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111241444469_CookingLevel.cs" />
+    <Compile Include="Migrations\202111241444469_CookingLevel.Designer.cs">
+      <DependentUpon>202111241444469_CookingLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recipes.cs" />
     <Compile Include="Reference.cs" />
@@ -63,6 +72,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111171606422_InitialCreate.resx">
+      <DependentUpon>202111171606422_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111241444469_CookingLevel.resx">
+      <DependentUpon>202111241444469_CookingLevel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
