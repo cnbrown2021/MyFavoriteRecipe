@@ -59,7 +59,9 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             {
                 RecipeName = detail.RecipeName,
                 Ingredients = detail.Ingredients,
-                CookingInstructions = detail.CookingInstructions
+                CookingInstructions = detail.CookingInstructions,
+                //CategoryID = detail.CategoryID,
+                //ReferenceID = detail.ReferenceID,
             };
             return View(content);
         }
@@ -69,6 +71,7 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         public ActionResult Edit(string name, RecipesEdit recipes)
         {
             if (!ModelState.IsValid) return View(recipes);
+
 
             var service = new RecipesService();
 
@@ -80,6 +83,29 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             ModelState.AddModelError("", "The recipe could not be updated");
 
             return View(recipes);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var service = new RecipesService();
+            var recipes = service.GetRecipesById(id);
+
+            return View(recipes);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = new RecipesService();
+
+            service.DeleteRecipes(id);
+
+            TempData["Save Result"] = "The recipe was deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }

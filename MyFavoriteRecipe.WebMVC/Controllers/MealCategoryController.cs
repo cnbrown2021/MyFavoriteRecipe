@@ -108,7 +108,7 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
 
             service.DeleteMealCategory(id);
 
-            TempData["SaveResult"] = "The meal category was deleted";
+            TempData["Save Result"] = "The meal category was deleted";
 
             return RedirectToAction("Index");
         }

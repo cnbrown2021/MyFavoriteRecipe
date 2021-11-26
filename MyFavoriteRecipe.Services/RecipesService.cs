@@ -24,7 +24,7 @@ namespace MyFavoriteRecipe.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Recipe.Add(content);
+                ctx.Recipess.Add(content);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -33,7 +33,7 @@ namespace MyFavoriteRecipe.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Recipe
+                var query = ctx.Recipess
                     .Select(r => new RecipesList
                     {
                         RecipeID = r.RecipeID,
@@ -50,7 +50,7 @@ namespace MyFavoriteRecipe.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var content = ctx.Recipe.Single(r => r.RecipeID == id);
+                var content = ctx.Recipess.Single(r => r.RecipeID == id);
 
                 return new RecipesDetail
                 {
@@ -68,16 +68,28 @@ namespace MyFavoriteRecipe.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var content = ctx.Recipe.Single(r => r.RecipeName == recipes.RecipeName);
+                var content = ctx.Recipess.Single(r => r.RecipeName == recipes.RecipeName);
 
                 content.RecipeName = recipes.RecipeName;
                 content.Ingredients = recipes.Ingredients;
                 content.CookingInstructions = recipes.CookingInstructions;
+                content.CategoryID = recipes.CategoryID;
+                content.ReferenceID = recipes.ReferenceID;
 
                 return ctx.SaveChanges() == 1;
             }
         }
-
         
+        public bool DeleteRecipes(int recipeId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var content = ctx.Recipess.Single(r => r.RecipeID == recipeId);
+
+                ctx.Recipess.Remove(content);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

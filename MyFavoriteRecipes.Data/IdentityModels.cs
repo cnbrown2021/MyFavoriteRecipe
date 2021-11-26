@@ -34,7 +34,7 @@ namespace MyFavoriteRecipe.WebMVC.Models
         }
 
         public DbSet<MealCategory> MealCategories { get; set; }
-        public DbSet<Recipes> Recipe { get; set; }
+        public DbSet<Recipes> Recipess { get; set; }
         public DbSet<Reference> References { get; set; }
 
 
