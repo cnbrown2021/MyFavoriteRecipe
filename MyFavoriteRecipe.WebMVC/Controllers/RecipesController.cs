@@ -1,4 +1,5 @@
 ﻿using MyFavoriteRecipe.Services;
+using MyFavoriteRecipe.WebMVC.Models;
 using MyFavoriteRecipes.Model;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
     [Authorize]
     public class RecipesController : Controller
     {
+        ApplicationDbContext _db = new ApplicationDbContext();
         // GET: Recipes
         public ActionResult Index()
         {
@@ -22,6 +24,8 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            DropDownList();
+
             return View();
         }
 
@@ -29,12 +33,19 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(RecipesCreate recipes)
         {
-            if (!ModelState.IsValid) return View(recipes);
+            if (!ModelState.IsValid)
+            {
+                DropDownList();
+                return View(recipes);
+            }
 
             var service = new RecipesService();
+            //ViewBag.MealCategories = _db.MealCategories.Select(c => new SelectListItem { Value = c.CategoryID.ToString(), Text = c.CategoryName }).ToList();
+            //ViewBag.References = _db.References.Select(r => new SelectListItem { Value = r.ReferenceID.ToString(), Text = r.CookbookName }).ToList();
 
             if (service.CreateRecipes(recipes))
             {
+                DropDownList();
                 TempData["SaveResult"] = "Your reference was created.";
                 return RedirectToAction("Index");
             }
@@ -53,6 +64,7 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
 
         public ActionResult Edit(int id)
         {
+            DropDownList();
             var service = new RecipesService();
             var detail = service.GetRecipesById(id);
             var content = new RecipesEdit
@@ -60,9 +72,10 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
                 RecipeName = detail.RecipeName,
                 Ingredients = detail.Ingredients,
                 CookingInstructions = detail.CookingInstructions,
-                //CategoryID = detail.CategoryID,
-                //ReferenceID = detail.ReferenceID,
+                CategoryID = detail.CategoryID,
+                ReferenceID = detail.ReferenceID,
             };
+
             return View(content);
         }
 
@@ -70,13 +83,14 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(string name, RecipesEdit recipes)
         {
-            if (!ModelState.IsValid) return View(recipes);
+            if (!ModelState.IsValid) { DropDownList(); return View(recipes); }
 
 
             var service = new RecipesService();
 
             if (service.UpdateRecipes(recipes))
             {
+                DropDownList();
                 TempData["SaveResult"] = "The recipe was updated";
                 return RedirectToAction("Index");
             }
@@ -106,6 +120,22 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             TempData["Save Result"] = "The recipe was deleted";
 
             return RedirectToAction("Index");
+        }
+
+        private void DropDownList()
+        {
+            MealCategoryDropDownList();
+            ReferenceDropDownList();
+        }
+
+        private void MealCategoryDropDownList()
+        {
+            ViewBag.MealCategories = _db.MealCategories.Select(c => new SelectListItem { Value = c.CategoryID.ToString(), Text = c.CategoryID + " " + c.CategoryName }).ToList();
+        }
+
+        private void ReferenceDropDownList()
+        {
+            ViewBag.References = _db.References.Select(r => new SelectListItem { Value = r.ReferenceID.ToString(), Text = r.ReferenceID + " " + r.CookbookName }).ToList();
         }
     }
 }

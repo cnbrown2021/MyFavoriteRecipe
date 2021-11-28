@@ -83,6 +83,8 @@ namespace MyFavoriteRecipe.Services
         public bool DeleteRecipes(int recipeId)
         {
             using (var ctx = new ApplicationDbContext())
+
+
             {
                 var content = ctx.Recipess.Single(r => r.RecipeID == recipeId);
 
