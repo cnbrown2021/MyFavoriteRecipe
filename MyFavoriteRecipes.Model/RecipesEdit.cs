@@ -8,6 +8,7 @@ namespace MyFavoriteRecipes.Model
 {
     public class RecipesEdit
     {
+        public int RecipeID { get; set; }
         public string RecipeName { get; set; }
         public string Ingredients { get; set; }
         public string CookingInstructions { get; set; }
@@ -22,3 +23,4 @@ namespace MyFavoriteRecipes.Model
         }
     }
 }
+

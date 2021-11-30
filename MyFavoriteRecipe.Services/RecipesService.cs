@@ -20,6 +20,7 @@ namespace MyFavoriteRecipe.Services
                 CookingInstructions = recipes.CookingInstructions,
                 CategoryID = recipes.CategoryID,
                 ReferenceID = recipes.ReferenceID,
+                CookingLevel = (Recipes.SkillLevel)recipes.CookingLevel,
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -40,7 +41,8 @@ namespace MyFavoriteRecipe.Services
                         RecipeName = r.RecipeName,
                         Ingredients = r.Ingredients,
                         CategoryID = r.CategoryID,
-                        ReferenceID = r.ReferenceID
+                        ReferenceID = r.ReferenceID,
+                        CookingLevel = (RecipesList.SkillLevel)r.CookingLevel,
                     });
                 return query.ToArray();
             }
@@ -60,6 +62,7 @@ namespace MyFavoriteRecipe.Services
                     CookingInstructions = content.CookingInstructions,
                     CategoryID = content.CategoryID,
                     ReferenceID = content.ReferenceID,
+                    CookingLevel = (RecipesDetail.SkillLevel)content.CookingLevel,
                 };
             }
         }
@@ -68,13 +71,15 @@ namespace MyFavoriteRecipe.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var content = ctx.Recipess.Single(r => r.RecipeName == recipes.RecipeName);
+                var content = ctx.Recipess.Single(r => r.RecipeID == recipes.RecipeID);
 
+                content.RecipeID = recipes.RecipeID;
                 content.RecipeName = recipes.RecipeName;
                 content.Ingredients = recipes.Ingredients;
                 content.CookingInstructions = recipes.CookingInstructions;
                 content.CategoryID = recipes.CategoryID;
                 content.ReferenceID = recipes.ReferenceID;
+                content.CookingLevel = (Recipes.SkillLevel)recipes.CookingLevel;
 
                 return ctx.SaveChanges() == 1;
             }
