@@ -69,6 +69,7 @@ namespace MyFavoriteRecipe.WebMVC.Controllers
             var detail = service.GetRecipesById(id);
             var content = new RecipesEdit
             {
+                RecipeID = detail.RecipeID,
                 RecipeName = detail.RecipeName,
                 Ingredients = detail.Ingredients,
                 CookingInstructions = detail.CookingInstructions,
