@@ -19,7 +19,7 @@ It is a perfect app to keep meal ideas and the cookbook information all in one p
 
 ## Installation
 
-
+[Install Here](https://github.com/cnbrown2021/MyFavoriteRecipe.git)
 
 ---
 
